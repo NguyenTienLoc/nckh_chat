@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="img/logo.png">
+	<link rel="stylesheet" href="css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="awesome/css/font-awesome.min.css"/>
+		<link rel="stylesheet" href="css/css.css" />
+    <title>humg chat</title>
+    
+    <!-- Load module socket.io vao client side -->
+    <script src="/socket.io/socket.io.js"></script> 
+    <script
+			  src="https://code.jquery.com/jquery-2.2.2.min.js"
+			  integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="
+			  crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+  </head>
+<body>
+<!-- start-layout-login -->
+<!-- <div id="layout_login">
+	<div class="grap"></div>
+	<div class="body">
+		<div class="login">
+		<div class="title_login">Welcome</div>
+		<div class="left_login">
+			<span style="font-size:40px">Webchat <span style="color: #D0F8FF;
+			text-shadow: 0 0 5px #A5F1FF, 0 0 10px #A5F1FF,
+			0 0 20px #A5F1FF, 0 0 30px #A5F1FF,
+			0 0 40px #A5F1FF;font-size:40px; color: #5379fa !important;">HUMG</span></span>
+		</div>
+		<div class="right_login">
+			<form>
+				<div class="form-group">
+					<i class="fa fa-user icon_user"></i>
+					<input type="text" class="form-control form_login" id="txt_email">
+				</div>
+				<div class="form-group">
+					<i class="fa fa-unlock-alt icon_user"></i>
+					<input type="password" class="form-control form_login" id="exampleInputPassword1">
+				</div>
+				<button type="button" id="btn-login" class="btn btn-primary">Đăng nhập</button>
+				<div class="txt_regis">
+					Nếu chưa có tài khoản,
+					vui lòng <a href="#" style="font-size:14px;color: #D0F8FF;
+					text-shadow: 0 0 5px #A5F1FF, 0 0 10px #A5F1FF,
+					0 0 20px #A5F1FF, 0 0 30px #A5F1FF,
+					0 0 40px #A5F1FF;">Đăng Ký</a>
+				</div>
+			</form>
+		</div>
+	</div>
+	</div>
+	<div class="icon_bar">
+		<div class="iconbar_left">
+			<img src="img/logo.png" alt="logo" class="login_logo">
+			<div class="txt_login">
+				trường đại học mỏ - địa chất <br>
+				<span style="font-size:14px;text-transform: none;line-height:1">Địa chỉ: Số 18 Phố Viên - Phường Đức Thắng - Q. Bắc Từ Liêm - Hà Nội <br>
+					Điện thoại: (+84-24) 3838 9633 <br>
+				Website: humg.edu.vn</span>
+			</div>
+		</div>
+	</div>
+</div> -->
+<!-- end-layout-login -->
+
+
+
+
+<!-- start-layout-chat -->
+<div id="layout_chat">
+	<div class="main">
+			<nav class="left_ctn">
+				<div class="main_menu hidden-sm hidden-xs">
+					<div class="avt_top">
+						<img src="img/user.jpg" alt="avt" class="avt_box">
+					</div>
+					<div class="menu_center">
+						<div class="icon_box" style="background: rgba(0, 0, 0, 0.12);">
+							<i class="fa fa-comments icon_mainmenu"></i>
+						</div>
+						<div class="icon_box">
+							<i class="fa fa-address-book icon_mainmenu"></i>
+						</div>
+						<div class="icon_box">
+							<i class="fa fa-users icon_mainmenu"></i>
+						</div>
+						<div class="icon_box">
+							<i class="fa fa-ellipsis-h icon_mainmenu"></i>
+						</div>
+					</div>
+					<div class="menu_bottom">
+						<div class="icon_box">
+							<i class="fa fa-bell icon_mainmenu"></i>
+						</div>
+						<div class="icon_box">
+							<i class="fa fa-star icon_mainmenu"></i>
+						</div>
+						<div class="icon_box">
+							<i class="fa fa-cog icon_mainmenu"></i>
+						</div>
+					</div>
+				</div>
+				<div class="cell_menu">
+					<div class="user" id="username_title">
+						Trung Quân
+					</div>
+					<div class="search_cell_menu">
+						<form class="form-inline form_search_box">
+							<div class="form-group">
+								<div class="input-group">
+									<input type="text" class="form-control form_search" id="exampleInputAmount" placeholder="Tìm kiếm">
+									<div class="input-group-addon icon_search"><i class="fa fa-search"></i></div>
+								</div>
+							</div>
+						</form>
+						<i class="fa fa-user-plus" style="color:#48c6ef;font-size: 20px;
+						padding-left: 15px;line-height: 28px"></i>
+					</div>
+					<div class="list_ol">
+						<div class="title_list_ol">
+							Danh sách online (<b id="cout_user"></b>)
+						</div>
+						<div id="list_user">
+							<div class="user_ol">
+								<div class="item_user">
+									<div>
+										<img src="img/user.jpg" style="width:50px;height:50px;border-radius: 50%">
+										<div class="mes_num">
+										<a href="#"><span class="badge mes_num_style">3</span></a>
+									</div>
+									</div>
+									<div class="info_user">
+										Khiêm Nguyễn
+									</div>
+									
+									<div class="time_ol">
+										<i class="fa fa-circle" style="line-height:20px;font-size:10px;color:#62CB00; float:right"></i>
+									</div>
+								</div>
+							</div>
+							<div class="user_ol">
+								<div class="item_user">
+									<img src="img/user.jpg" style="width:50px;height:50px;border-radius: 50%">
+									<div class="info_user">
+										Lộc Sida
+									</div>
+									<div class="time_ol">
+										3 phút
+									</div>
+								</div>
+							</div>
+							<div class="user_ol">
+								<div class="item_user">
+									<img src="img/user.jpg" style="width:50px;height:50px;border-radius: 50%">
+									<div class="info_user">
+										Hồng Pink
+									</div>
+									<div class="time_ol">
+										<i class="fa fa-circle" style="font-size:10px;color:#62CB00; float:right"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</nav>
+			<div class="right_ctn">
+				<div id="body_chat">
+					<!-- start_body_chat_server -->
+					<div id="chat_server">
+						<div class="chat_head">
+								<div class="info_chater">
+									<div class="mes_header_center">
+										
+										<div class="info">
+											<div class="user_name">Chát Toàn Trường</div>
+											<div class="online">Số người truy cập</div>
+										</div>
+									</div>
+								</div>
+						</div>
+						
+						<div class="mes_space" id="mes_space_server">
+							<%results.forEach(function(rows){%>
+								<%
+								if(rows.ten=="Khói"){
+								%>
+								<b><%=rows.ten%>--<%=rows.noidung%></b><br>
+								<%
+								}else{
+								%>
+								<%=rows.ten%>--<%=rows.noidung%><br>
+								<%
+								}
+								
+								%>
+								
+							<%})%>
+						</div>
+						<div class="chat_input">
+							<div class="chat_input_tool">
+								<div class="icon_tool">
+									<i class="fa fa-picture-o icon_tool_style" aria-hidden="true"></i>
+									<i class="fa fa-camera icon_tool_style" aria-hidden="true"></i>
+									<i class="fa fa-paperclip icon_tool_style" aria-hidden="true" ></i>
+									<i class="fa fa-smile-o icon_tool_style" aria-hidden="true"></i>
+									<i class="fa fa-microphone icon_tool_style" style="padding-right:15px" aria-hidden="true"></i>
+								</div>
+							</div>
+							<div class="chat_input_ctn">
+								<div class="chat_input_form">
+									<textarea id="input_text_server" name="mes" placeholder="Nhập tin nhắn" class="txt_ip"></textarea>
+								</div>
+								<div class="btn_send" id="btn_chat_server">
+									<a href="#" class="btn_link">GỬI</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- end_body_chat_server -->
+
+
+					<!-- start_body_chat_đơn -->
+					
+					<!-- <div id="chat_don " >
+						<div class="chat_head">
+								<div class="info_chater">
+									<div class="mes_header_center">
+										<div class="avatar" style="float:left">
+											<a href="#"><img src="img/user.jpg" class="border_avatar" alt=""></a>
+										</div>
+										<div class="info">
+											<div class="user_name">Hà Dím</div>
+											<div class="online">Truy cập 3 phút trước</div>
+										</div>
+									</div>
+								</div>
+						</div>
+						<div class="mes_space">
+							<div class="mes_client_box">
+								<div class="name_client">
+									<span class="txt_mes_client">Hà</span>
+								</div>
+								<div class="mes_ctn">
+									<div class="avt_client_box">
+										<img src="img/user.jpg" class="avt_client">
+									</div>
+									<div class="mes_ctn_txt">
+										<span class="txt_mes_ctn">Hello Lorem .</span>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+						<div class="chat_input">
+							<div class="chat_input_tool">
+								<div class="icon_tool">
+									<i class="fa fa-picture-o icon_tool_style" aria-hidden="true"></i>
+									<i class="fa fa-camera icon_tool_style" aria-hidden="true"></i>
+									<i class="fa fa-paperclip icon_tool_style" aria-hidden="true" ></i>
+									<i class="fa fa-smile-o icon_tool_style" aria-hidden="true"></i>
+									<i class="fa fa-microphone icon_tool_style" style="padding-right:15px" aria-hidden="true"></i>
+								</div>
+							</div>
+							<div class="chat_input_ctn">
+								<div class="chat_input_form">
+									<textarea name="mes" placeholder="Nhập tin nhắn" class="txt_ip"></textarea>
+								</div>
+								<div class="btn_send">
+									<a href="#" class="btn_link">GỬI</a>
+								</div>
+							</div>
+						</div>
+					</div> -->
+					<!-- end_body_chat_đơn -->
+				</div>
+				
+			</div>
+		</div>
+</div>
+<!-- end- layout-chat -->
+</body>
+</html>

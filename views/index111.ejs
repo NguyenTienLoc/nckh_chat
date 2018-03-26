@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="img/logo.png">
+	<link rel="stylesheet" href="css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="awesome/css/font-awesome.min.css"/>
+		<link rel="stylesheet" href="css/css.css" />
+    <title id="title_box">Humg chatbox - Kết nối sinh viên trường Đại Học Mỏ Địa Chất Hà Nội</title>
+    
+    <!-- Load module socket.io vao client side -->
+    <script src="/socket.io/socket.io.js"></script> 
+    <script
+			  src="https://code.jquery.com/jquery-2.2.2.min.js"
+			  integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="
+			  crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+  </head>
+<body>
+<div class="nen">
+
+</div>
+<!-- start-layout-login -->
+<div id="layout_login">
+	<div class="grap"></div>
+	<div class="body">
+		<div class="login">
+		<div class="title_login">Welcome</div>
+		<div class="left_login">
+			<span style="font-size:40px">Webchat <span style="color: #D0F8FF;
+			text-shadow: 0 0 5px #A5F1FF, 0 0 10px #A5F1FF,
+			0 0 20px #A5F1FF, 0 0 30px #A5F1FF,
+			0 0 40px #A5F1FF;font-size:40px; color: #5379fa !important;">HUMG</span></span>
+		</div>
+		<div class="right_login">
+			<form>
+				<div class="form-group">
+					<i class="fa fa-user icon_user"></i>
+					<input type="text" class="form-control form_login" id="txt_email">
+				</div>
+				<div class="form-group">
+					<i class="fa fa-unlock-alt icon_user"></i>
+					<input type="password" class="form-control form_login" id="txt_pass">
+				</div>
+				<button type="button" id="btn-login" class="btn btn-primary">Đăng nhập</button>
+				<div class="txt_regis">
+					Nếu chưa có tài khoản,
+					vui lòng <a href="javascript:void(0)" id="dang_ky" style="font-size:14px;color: #D0F8FF;
+					text-shadow: 0 0 5px #A5F1FF, 0 0 10px #A5F1FF,
+					0 0 20px #A5F1FF, 0 0 30px #A5F1FF,
+					0 0 40px #A5F1FF;">Đăng Ký</a>
+				</div>
+			</form>
+		</div>
+	</div>
+	</div>
+	<div class="icon_bar">
+		<div class="iconbar_left">
+			<img src="img/logo.png" alt="logo" class="login_logo">
+			<div class="txt_login">
+				trường đại học mỏ - địa chất <br>
+				<span style="font-size:14px;text-transform: none;line-height:1">Địa chỉ: Số 18 Phố Viên - Phường Đức Thắng - Q. Bắc Từ Liêm - Hà Nội <br>
+					Điện thoại: (+84-24) 3838 9633 <br>
+				Website: <a href="https://humg.edu.vn">humg.edu.vn</a></span>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- end-layout-login -->
+
+<!-- start register -->
+<div id="register_layout">
+	<div class="grap"></div>
+	<div class="body">
+		
+	</div>
+	<div class="icon_bar">
+		<div class="iconbar_left">
+			<img src="img/logo.png" alt="logo" class="login_logo">
+			<div class="txt_login">
+				trường đại học mỏ - địa chất <br>
+				<span style="font-size:14px;text-transform: none;line-height:1">Địa chỉ: Số 18 Phố Viên - Phường Đức Thắng - Q. Bắc Từ Liêm - Hà Nội <br>
+					Điện thoại: (+84-24) 3838 9633 <br>
+				Website: humg.edu.vn</span>
+			</div>
+		</div>
+	</div>
+	
+ 	<div class="register">
+	<div class="title_login" style="font-size:30px;text-shadow: 0 0 5px #A5F1FF, 0 0 10px #A5F1FF,
+	0 0 20px #A5F1FF, 0 0 30px #A5F1FF,
+	0 0 40px #A5F1FF;margin:0;">
+	Đăng Ký
+</div>
+		<form>
+			<div class="form-group" id="register">
+				<label>Tên đăng nhập</label>
+				<input type="text"  class="form-control form_login" id="txt_msv_register" style="padding-left:10px" placeholder="">
+			</div>
+			<div class="form-group" id="register">
+				<label>Tên của bạn</label>
+				<input type="text" class="form-control form_login" id="txt_name_register" style="padding-left:10px">
+			</div>
+			
+			<div class="form-group" id="register" style="margin-top:10px">
+				<label>Giới tính</label>
+				<input type="radio" id="sex" name="gender" checked value="0"><label style="color:#fff;padding-left:10px">Nam</label>
+				<input type="radio" id="sex" name="gender" value="1" style="margin-left:50px;"><label style="color:#fff;padding-left:10px">Nữ</label>
+				
+			</div>
+			<div class="form-group" id="register">
+				<label for="exampleInputPassword1">Mật khẩu</label>
+				<input type="password" class="form-control form_login" id="txt_pass_register" style="padding-left:10px">
+			</div>
+			<button type="button" id="btn_register" class="btn btn-primary">Đăng ký</button>
+		</form>
+</div>
+</div>
+<!-- end register -->
+
+<!-- start-layout-chat -->
+<div id="layout_chat">
+	<div class="main">
+			<nav class="left_ctn">
+				<div class="main_menu hidden-sm hidden-xs">
+					<div class="avt_top">
+						<img src="img/user.jpg" alt="avt" class="avt_box">
+					</div>
+					<div class="menu_center">
+						<div class="icon_box" id="back_chat_server" style="background: rgba(0, 0, 0, 0.12);">
+							<i class="fa fa-comments icon_mainmenu"></i>
+						</div>
+						<div class="icon_box">
+							<i class="fa fa-address-book icon_mainmenu" id="btn_chat_don"></i>
+						</div>
+						<div class="icon_box">
+							<i class="fa fa-users icon_mainmenu" id="btn_chat_room"></i>
+						</div>
+						<div class="icon_box">
+							<i class="fa fa-ellipsis-h icon_mainmenu"></i>
+						</div>
+					</div>
+					<div class="menu_bottom">
+						<div class="icon_box">
+							<i class="fa fa-bell icon_mainmenu"></i>
+						</div>
+						<div class="icon_box">
+							<i class="fa fa-star icon_mainmenu"></i>
+						</div>
+						<div class="icon_box">
+							<i class="fa fa-cog icon_mainmenu" id="btn_setting"></i>
+						</div>
+					</div>
+				</div>
+				<div class="cell_menu">
+					<div class="user" id="username_title">
+						Trung Quân
+					</div>
+					<div class="search_cell_menu">
+						<form class="form-inline form_search_box">
+							<div class="form-group">
+								<div class="input-group">
+									<input type="text" class="form-control form_search" id="exampleInputAmount" placeholder="Tìm kiếm">
+									<div class="input-group-addon icon_search"><i class="fa fa-search"></i></div>
+								</div>
+							</div>
+						</form>
+						<i class="fa fa-user-plus" style="color:#48c6ef;font-size: 20px;
+						padding-left: 15px;line-height: 28px"></i>
+					</div>
+					<div class="list_ol" id="box_list_ol">
+						<div class="title_list_ol">
+							Danh sách online (<b id="cout_user"></b>)
+						</div>
+						<div id="list_user">
+							<div class="user_ol">
+								<div class="item_user">
+									<div>
+										<img src="img/user.jpg" style="width:50px;height:50px;border-radius: 50%">
+										<div class="mes_num">
+										<a href="#"><span class="badge mes_num_style">3</span></a>
+									</div>
+									</div>
+									<div class="info_user">
+										Khiêm Nguyễn
+									</div>
+									
+									<div class="time_ol">
+										<i class="fa fa-circle" style="line-height:20px;font-size:10px;color:#62CB00; float:right"></i>
+									</div>
+								</div>
+							</div>
+							<div class="user_ol">
+								<div class="item_user">
+									<img src="img/user.jpg" style="width:50px;height:50px;border-radius: 50%">
+									<div class="info_user">
+										Lộc Sida
+									</div>
+									<div class="time_ol">
+										3 phút
+									</div>
+								</div>
+							</div>
+							<div class="user_ol">
+								<div class="item_user">
+									<img src="img/user.jpg" style="width:50px;height:50px;border-radius: 50%">
+									<div class="info_user">
+										Hồng Pink
+									</div>
+									<div class="time_ol">
+										<i class="fa fa-circle" style="font-size:10px;color:#62CB00; float:right"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="list_ol" id="box_chat_room">
+						<div class="title_list_ol" style="padding:12px 13px;background:#99ccff">
+							Danh sách phòng chat
+						</div>
+						<div class="user_ol">
+							<div class="chat_ro" name="giao-duc-hoc-duong">
+									<div class="item_user" style="padding:5px 10px;" >
+											<div class="avata_chatbox">
+												<i class="fa fa-graduation-cap icon_chatbox"></i>
+											</div>
+											<div class="info_user" style="height:50px;padding: 0px; margin-left:10px;">
+												<div class="tit_chatbox">
+													Giáo dục & Học đường <br>
+													<span class="note_chatbox">Nơi trao đổi thông tin về học tập</span>
+												</div>
+											</div>
+										</div>
+							</div>
+						</div>
+	
+						<div class="user_ol">
+							<div class="chat_ro" name="cam-nhan-ty">
+									<div class="item_user" style="padding:5px 10px;" >
+											<div class="avata_chatbox" style="background:#ff9999">
+												<i class="fa fa-heart icon_chatbox" style="padding-left:11px"></i>
+											</div>
+											<div class="info_user" style="height:50px;padding: 0px; margin-left:10px;" >
+												<div class="tit_chatbox">
+													Tình yêu & Tình bạn <br>
+													<span class="note_chatbox">Nơi chia sẻ cảm nhận về tình yêu</span>
+												</div>
+											</div>
+										</div>
+							</div>
+						</div>
+	
+						<div class="user_ol">
+							<div class="chat_ro" name="thu-gian-sau-gio-hoc">
+									<div class="item_user" style="padding:5px 10px;" >
+											<div class="avata_chatbox" style="background:#6699cc">
+												<i class="fa fa-music icon_chatbox" style="padding-left:11px"></i>
+											</div>
+											<div class="info_user" style="height:50px;padding: 0px; margin-left:10px;" >
+												<div class="tit_chatbox">
+													Giải Trí <br>
+													<span class="note_chatbox">Nơi thư giãn sau những giờ học tập</span>
+												</div>
+											</div>
+										</div>
+							</div>
+						</div>
+	
+						<div class="user_ol">
+							<div class="chat_ro" name="chia-se-quan-diem-song">
+								<div class="item_user" style="padding:5px 10px;" >
+									<div class="avata_chatbox" style="background:#99cc33">
+										<i class="fa fa-coffee icon_chatbox" style="padding-left:11px"></i>
+									</div>
+									<div class="info_user" style="height:50px;padding: 0px; margin-left:10px;">
+										<div class="tit_chatbox">
+											Phong Cách Sống <br>
+											<span class="note_chatbox">Nơi chia sẻ quan điểm sống</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+	
+						<div class="user_ol">
+							<div class="chat_ro" name="su-kien-noi-bat">
+								<div class="item_user" style="padding:5px 10px;" >
+									<div class="avata_chatbox" style="background:#cc9900">
+										<i class="fa fa-gamepad icon_chatbox" style="padding-left:10px"></i>
+									</div>
+									<div class="info_user" style="height:50px;padding: 0px; margin-left:10px;">
+										<div class="tit_chatbox">
+											Sân Chơi & Sự Kiện <br>
+											<span class="note_chatbox">Sự kiện nổi bật được cập nhật</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+					
+
+
+
+
+					<div class="setting_box" id="setting_box">
+						<div class="info_box">
+							<div class="info_avt_box">
+								<div class="info_title">
+									<div class="info_txt">
+										Chỉnh sửa thông tin cá nhân
+									</div>
+									<div class="icon_exit" style="line-height:30px;">
+										<a href="javascript:void(0)"><i class="fa fa-times" id="close_form_info" style="color:#333"></i></a>
+									</div>
+								</div>
+								
+							</div>
+							<div class="info_name" id="info_name_title">
+								Trung Quân
+							</div>
+							<div id="info_name_id" style="display: none">1</div>
+							<div class="info_info_box">
+								
+								<div class="info_info" style="margin-bottom:20px">
+									<input type="text" class="form-control info_input"  id="info_txt_name" placeholder="Nhập tên mới">
+								</div>
+								<div class="info_info" style="display: none">
+									<input type="text" class="form-control info_input" value="" id="info_txt_pass_old_none">
+								</div>
+								<div class="info_info" style="margin-bottom:20px">
+										<input type="password" class="form-control info_input" value="" id="info_txt_pass_old" placeholder="Nhập mật khẩu cũ">
+									</div>
+								<div class="info_info" style="margin-bottom:20px">
+									<input type="password" class="form-control info_input" id="info_txt_pass_new" placeholder="Nhập mật khẩu mới">
+								</div>
+								
+								<div class="info_info" style="padding-top:20px;padding-left:30%">
+									<button type="button" id="btn_setting_info" class="btn btn-info">Cập Nhật Thông Tin</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</nav>
+			<div class="right_ctn"  style="background-image: url('img/bg_chat.jpg'); background-size: cover;">
+				<div id="body_chat">
+					<!-- start_body_chat_server -->
+					<div id="chat_server">
+						<div class="chat_head">
+								<div class="info_chater">
+									<div class="mes_header_center">
+										
+										<div class="info">
+											<div class="user_name">Chát Toàn Trường</div>
+											
+										</div>
+									</div>
+								</div>
+						</div>
+						
+						<div class="mes_space" id="mes_space_server">
+							
+							<%results.forEach(function(rows){%>
+								
+								<div class="mes_client_box">
+									<div class="name_client">
+										<span class="txt_mes_client"><b><%=rows.ten%></b></span>
+									</div>
+									<div class="mes_ctn">
+										<div class="avt_client_box">
+											<img src="img/user.jpg" class="avt_client">
+										</div>
+										<div class="mes_ctn_txt">
+											<span class="txt_mes_ctn"><%=rows.noidung%></span>
+										</div>
+									</div>
+								</div>
+							<%})%>
+						</div>
+						<div class="chat_input">
+							<div class="chat_input_tool">
+								<div class="icon_tool">
+									<i class="fa fa-picture-o icon_tool_style" aria-hidden="true"></i>
+									<i class="fa fa-camera icon_tool_style" aria-hidden="true"></i>
+									<i class="fa fa-paperclip icon_tool_style" aria-hidden="true" ></i>
+									<i class="fa fa-smile-o icon_tool_style" aria-hidden="true"></i>
+									<i class="fa fa-microphone icon_tool_style" style="padding-right:15px" aria-hidden="true"></i>
+								</div>
+							</div>
+							<div class="chat_input_ctn">
+								<div class="chat_input_form">
+									<textarea id="input_text_server" name="mes" placeholder="Nhập tin nhắn" class="txt_ip"></textarea>
+								</div>
+								<div class="btn_send" id="btn_chat_server">
+									<a href="#" class="btn_link">GỬI</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- end_body_chat_server -->
+					
+
+					<!-- start_body_chat_đơn -->
+					
+					
+					<!-- end_body_chat_đơn -->
+				</div>
+				
+			</div>
+		</div>
+</div>
+<!-- end- layout-chat -->
+</body>
+</html>
